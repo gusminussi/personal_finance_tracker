@@ -36,7 +36,7 @@ Um rastreador de finanças pessoais desenvolvido em Python, que permite registra
 
 - `main.py` — Lógica principal: classe `CSV` (leitura/escrita de dados) e menu interativo
 - `data_entry.py` — Funções de entrada e validação de dados do usuário
-- `finance_data.csv` — Arquivo onde as transações são armazenadas
+- `finance_data.csv` — Arquivo onde as transações são armazenadas (gerado automaticamente na primeira execução, não incluído no repositório)
 
 ## Tecnologias
 
