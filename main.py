@@ -33,7 +33,7 @@ class CSV:
     @classmethod
     def get_transactions(cls, start_date, end_date):
         df = pd.read_csv(cls.CSV_FILE)
-        df["date"] pd.to_datetime(df["date"], format=CSV.FORMAT)
+        df["date"] = pd.to_datetime(df["date"], format=CSV.FORMAT)
         start_date = datetime.strptime(start_date, CSV.FORMAT)
         end_date = datetime.strptime(end_date, CSV.FORMAT)
 
@@ -53,7 +53,20 @@ class CSV:
                 )
             )
 
-        
+            total_income = filtered_df[filtered_df["category"] == "Income"] [
+                "amount"
+            ].sum()
+            total_expense = filtered_df[filtered_df["category"] == "Expense"] [
+                "amount"
+            ].sum()
+            print("\nSummary: ")
+            print(f"Total Income: ${total_income:.2f}")
+            print(f"Total Expense: ${total_expense:.2f}")
+            print(f"Net Savings: ${(total_income - total_expense):.2f}")
+
+        return filtered_df
+
+
 def add():
     CSV.initialize_csv()
     date = get_date(
@@ -65,5 +78,25 @@ def add():
     description = get_description()
     CSV.add_entry(date, amount, category, description)
 
+def main():
+    while True:
+        print("\n1. Add a new transaction")
+        print("2. View transactions and summary within a date range")
+        print("3. Exit")
+        choice = input("Enter your choice (1-3): ")
 
-add()
+        if choice == "1":
+            add()
+        elif choice == "2":
+            start_date = get_date("Enter the start date (dd-mm-yyyy): ")
+            end_date = get_date("Enter the end date (dd-mm-yyyy): ")
+            df = CSV.get_transactions(start_date, end_date)
+        elif choice == "3":
+            print("Exiting...")
+            break
+        else:
+            print("Invalid choice. Enter 1, 2 or 3.")
+
+
+if __name__ == "__main__":
+    main()
