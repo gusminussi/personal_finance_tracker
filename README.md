@@ -28,9 +28,9 @@ Um rastreador de finanças pessoais desenvolvido em Python, que permite registra
 ```
 
 4. Use o menu interativo para adicionar transações ou consultar um período:
-1. Add a new transaction
-2. View transactions and summary within a date range
-3. Exit
+- Add a new transaction
+- View transactions and summary within a date range
+- Exit
 
 ## Estrutura do projeto
 
