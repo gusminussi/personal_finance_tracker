@@ -3,6 +3,7 @@ import csv
 from datetime import datetime
 from data_entry import get_amount, get_category, get_date, get_description
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 
 
 class CSV:
@@ -96,14 +97,21 @@ def plot_transactions(df):
         .sum()
     )
 
-    plt.figure(figsize=(10, 5))
+    plt.figure(figsize=(14, 6))
     plt.plot(income_df.index, income_df.values, label="Income", color="g")
     plt.plot(expense_df.index, expense_df.values, label="Expense", color="r")
+
+    ax = plt.gca()
+    ax.xaxis.set_major_locator(mdates.DayLocator(interval=2))
+    ax.xaxis.set_major_formatter(mdates.DateFormatter('%d-%m-%Y'))
+
+    plt.xticks(rotation=45, ha="right")
     plt.xlabel("Date")
     plt.ylabel("Amount")
     plt.title("Income and Expenses over time:")
     plt.legend()
     plt.grid(True)
+    plt.tight_layout()
     plt.show()
 
 def main():
