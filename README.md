@@ -1,13 +1,13 @@
-# Personal Finance Tracker 💰
+# Personal Finance Tracker 
 
 Um rastreador de finanças pessoais desenvolvido em Python, que permite registrar receitas e despesas e visualizar um resumo financeiro filtrado por período.
 
 ## Funcionalidades
 
-- ✅ Registro de transações (receita ou despesa) com data, valor, categoria e descrição
-- ✅ Armazenamento persistente em arquivo CSV
-- ✅ Consulta de transações dentro de um intervalo de datas
-- ✅ Resumo automático: total de receitas, total de despesas e saldo líquido do período
+-  Registro de transações (receita ou despesa) com data, valor, categoria e descrição
+-  Armazenamento persistente em arquivo CSV
+-  Consulta de transações dentro de um intervalo de datas
+-  Resumo automático: total de receitas, total de despesas e saldo líquido do período
 
 ## Como usar
 
@@ -43,7 +43,4 @@ Um rastreador de finanças pessoais desenvolvido em Python, que permite registra
 - Python 3
 - [pandas](https://pandas.pydata.org/) — manipulação e filtragem de dados
 - csv (biblioteca padrão) — escrita de registros
-
-Próxima melhoria a caminho:
-
-- 📊 Visualização gráfica dos dados com Matplotlib
+- Matplotlib — visualização gráfica dos dados
