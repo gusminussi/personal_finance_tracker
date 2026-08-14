@@ -89,28 +89,30 @@ def plot_transactions(df):
         ["amount"]
         .resample("D")
         .sum()
+        .fillna(0)
     )
     expense_df = (
         df[df["category"] == "Expense"]
         ["amount"]
         .resample("D")
         .sum()
+        .fillna(0)
     )
 
     plt.figure(figsize=(14, 6))
-    plt.plot(income_df.index, income_df.values, label="Income", color="g")
-    plt.plot(expense_df.index, expense_df.values, label="Expense", color="r")
-
+    plt.bar(income_df.index, income_df.values, label="Income", color="g", width=0.3, align='edge')
+    plt.bar(expense_df.index, expense_df.values, label="Expense", color="r", width=-0.3, align='edge')
+    
     ax = plt.gca()
-    ax.xaxis.set_major_locator(mdates.DayLocator(interval=2))
-    ax.xaxis.set_major_formatter(mdates.DateFormatter('%d-%m-%Y'))
-
-    plt.xticks(rotation=45, ha="right")
+    ax.xaxis.set_major_locator(mdates.DayLocator(interval=1))
+    ax.xaxis.set_major_formatter(mdates.DateFormatter('%d-%m'))
+    
+    plt.xticks(rotation=45, ha='right')
     plt.xlabel("Date")
     plt.ylabel("Amount")
     plt.title("Income and Expenses over time:")
     plt.legend()
-    plt.grid(True)
+    plt.grid(True, axis='y')
     plt.tight_layout()
     plt.show()
 
