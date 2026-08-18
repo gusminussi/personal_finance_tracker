@@ -1,2 +1,5 @@
-__pycache__/
 finance_data.csv
+__pycache__/
+*.pyc
+.streamlit/
+.env
